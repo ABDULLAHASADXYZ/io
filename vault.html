@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secret Vault</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  
+  <style>
+    .vault {
+      display: none;
+      margin-top: 30px;
+    }
+    .vault.show {
+      display: block;
+    }
+    .password-form {
+      margin-top: 100px;
+    }
+    .vault-card {
+      transition: 0.3s;
+    }
+    .vault-card:hover {
+      transform: scale(1.03);
+    }
+        body{
+
+background-color: #000; /* Dark background */
+  color: #fdf500;          /* Yellow text (matches the glow) */
+  box-shadow: 0 0 30px rgba(255, 251, 0, 0.4),
+              0 0 60px rgba(255, 251, 0, 0.3) inset;
+  animation: glowEffect 3s ease-in-out infinite;
+  transition: background 0.5s ease;
+
+
+
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      margin: 0;
+
+      
+    }
+
+
+@keyframes glowEffect {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 251, 0, 0.2),
+                0 0 50px rgba(255, 251, 0, 0.1) inset;
+  }
+  50% {
+    box-shadow: 0 0 60px rgba(255, 251, 0, 0.6),
+                0 0 100px rgba(255, 251, 0, 0.4) inset;
+  }
+}
+
+
+       a.card-link {
+      text-decoration: none;
+            color: inherit;
+      text-align: center;
+     
+
+        }
+
+    .card:hover {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.158);
+      transform: scale(1.02);
+      transition: 0.2s;
+      background-color: rgba(0, 0, 0, 0.295);    
+      text-align: center;
+       
+    }
+
+    
+    h1 {
+      font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+      font-size: 3rem;
+      text-align: center;
+      color: white;
+      text-shadow: 2px 2px 4px #000;
+    }
+    .dropdown-menu {
+    background-color: rgba(245, 222, 179, 0);
+  }
+  .card {
+  background-color: #ffffff00;
+  color: rgb(255, 255, 255);
+    border: none;
+    
+}
+video {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: -10px;
+}
+
+.navbar{
+background-color: rgba(170, 170, 170, 0.712);
+margin-top: 0px;
+margin-bottom: -10px;
+
+
+}
+.navbar-brand{
+  color: rgb(255, 255, 255);
+  
+ 
+
+
+}
+.nav-link{
+  color: #fff;
+
+
+
+}
+
+footer {
+    background-color: #ffffff00;
+    text-align: center;
+    padding: 20px;
+}
+
+.social-logo {
+    width: 40px;
+    height: auto;
+    transition: transform 0.3s;
+        margin: 0 10px;
+        border-radius: 100px;
+
+}
+
+.social-logo:hover {
+    transform: scale(1.2);
+}
+.brand-logo {
+  width: 50px;
+  height: auto;
+  border: 2px solid #ffffff; /* Example: red dashed border */
+  border-radius: 100px;
+  padding: 5px;
+}
+.info{
+  background-color: rgba(0, 0, 0, 0.521);
+  color: bisque;
+  text-align: center;
+}
+.card-img-custom{
+  border-radius: 10px;
+  margin-top: 10px;
+    
+}
+
+  .video-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .video-card {
+      background-color: #ffffff00;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      color: white;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .download-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .download-btn:hover {
+        transform: scale(1.2);
+    }
+    .download-btn img {
+  width: 40px;  /* Aap isko 24px, 20px bhi kar sakte ho */
+  height: auto;
+  color: white;
+  background-color: white;
+  border-radius: 30px;
+
+}
+.btn{
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  color: #ffffff
+}
+.btn-primary:hover{
+  background-color: #ffffff00;
+      transform: scale(1.2);
+
+}
+  </style>
+</head>
+<body>
+
+
+
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+
+    <a class="navbar-brand" href="#">
+      <img src="images/logo.jpeg" alt="Instagram" class="brand-logo">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+      <ul class="navbar-nav text-center">
+        
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <img src="images/home.jpeg" alt="HOME" class="social-logo">
+          </a>
+
+                            <li class="nav-item">
+          <a class="nav-link" href="vault.html">
+            <img src="images/downloads.jpeg" alt="Downloads" class="social-logo">
+          </a>
+           
+
+                    <li class="nav-item">
+          <a class="nav-link" href="#download">
+            <img src="images/download.png" alt="whatsapp" class="social-logo">
+          </a>
+        </li>
+          
+          
+          <li class="nav-item">
+          <a class="nav-link" href="https://wa.me/+923353393213">
+            <img src="images/whats.jpeg" alt="whatsapp" class="social-logo">
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.instagram.com/abdullah.net.io">
+            <img src="images/insta.jpeg" alt="instagram" class="social-logo">
+          </a>
+        </li>
+
+        
+        
+ 
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+
+
+
+<!-- 🔐 Password Vault Section -->
+<div class="container">
+
+  <!-- Password Form -->
+  <div class="password-form text-center">
+    <h3 class="mb-4">Enter Password to Access Vault</h3>
+    <input type="password" id="vaultPassword" class="form-control w-50 mx-auto" placeholder="password">
+    <button onclick="unlockVault()" class="btn btn-primary mt-3">Unlock</button>
+
+    <p id="error" class="text-danger mt-2" style="display:none;">Incorrect password. Try again.</p>
+
+    <!-- Forgot Password -->
+    <p class="mt-3">
+      <a href="https://wa.me/+923353393213?text=Forgot%20Vault%20Password%20🗝️" target="_blank">Forgot Password?</a>
+    </p>
+
+    <!-- 💰 Buy Course Buttons -->
+    <a href="https://wa.me/+923353393213?text=I%20want%20to%20buy%20the%20course%20📘" target="_blank" class="btn btn-success mt-2">Buy Course (WhatsApp)</a>
+    <button onclick="showJazzCashInfo()" class="btn btn-warning mt-2">Pay with UPAISA</button>
+  </div>
+
+  <!-- 🔔 JazzCash Info Section -->
+  <div id="jazzcashInfo" class="text-center mt-4" style="display: none;">
+    <h5 class="mb-2">📱 Upaisa Payment Details</h5>
+    <p><strong>Send PKR 999</strong> to the following upaisa number:</p>
+    <p><strong>📞 03353393213</strong></p>
+    <p>After payment, send a screenshot or transaction ID via WhatsApp:</p>
+    <a href="https://wa.me/+923353393213?text=I%20have%20paid%20via%20JazzCash%20and%20want%20access%20to%20the%20vault" class="btn btn-dark" target="_blank">Send Payment Proof</a>
+  </div>
+
+
+    <div id="vaultSection" class="vault">
+      <h3 class="text-center mb-4"></h3>
+      <div class="row g-4">
+<hr>
+        <br>
+  <h1><b>Course 2024 (Educational Purposes)</b></h1>
+    <div class="video-card">
+      <video controls>
+        <source src="videos/1) SetupKali linux install.mp4" type="video/mp4">
+        ABDULLAH.NET
+      </video>
+      <p>SetupKali linux install</p>
+      <a class="download-btn" href="https://drive.google.com/file/d/14Rfk4AP7eTZGljlzBktPsjK_yvyKIJGn/view?usp=drive_link" download> <img src="images/download.png" alt=""> </a>
+    </div>
+
+    <div class="video-card">
+      <video controls>
+        <source src="videos/2) H@ck Someone Social Media Account Using Zphisher (Part1).mp4" type="video/mp4">
+      ABDULLAH.NET
+      </video>
+      <p>H@ck Someone Social Media Account Using Zphisher (Part1)</p>
+      <a class="download-btn" href="https://drive.google.com/file/d/14YBQ4CGmjv64xPPYFmbPbW9PZM-dEyib/view?usp=drive_link" download> <img src="images/download.png" alt=""> </a>
+    </div>
+
+    
+    <div class="video-card">
+      <video controls>
+        <source src="videos/3) H@ck Someone Social Media Account Using Zphisher (Part2).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p> H@ck Someone Social Media Account Using Zphisher (Part2)</p>
+      <a class="download-btn" href="https://drive.google.com/file/d/14K2l5M099g3IoVDywCovYFCsWewg-6fp/view?usp=drive_link" download> <img src="images/download.png" alt=""> </a>
+    </div>
+
+    
+        <div class="video-card">
+      <video controls>
+        <source src="videos/4) Access Someone Instagram Using Shark Bypass Two Step.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>Access Someone Instagram Using Shark Bypass Two Step</p>
+      <a class="download-btn" href="https://drive.google.com/file/d/14XAHAzpvO-gl-Zl49HBQQS4eN54h-uF1/view?usp=drive_link" download> <img src="images/download.png" alt=""> </a>
+    </div>
+
+        <div class="video-card">
+      <video controls>
+        <source src="videos/5) How To Access Someone Camera Using Shark.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>How To Access Someone Camera Using Shark.mp4</p>
+      <a class="download-btn" href="https://drive.google.com/file/d/19c8WN8sJSI08v3aWN3ydDTrzuZ3boqgx/view?usp=drive_link" download> <img src="images/download.png" alt=""> </a>
+    </div>
+
+
+            <div class="video-card">
+      <video controls>
+        <source src="videos/6) How To Access Someone Facebook Using Shark.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>How To Access Someone Facebook Using Shark</p>
+      <a class="download-btn" href="https://drive.google.com/file/d/19m4sAA7ivn4t7DlpdDI3VQr-mjdFQPHH/view?usp=drive_link" download> <img src="images/download.png" alt=""> </a>
+    </div>
+
+            <div class="video-card">
+      <video controls>
+        <source src="videos/7) Access Someone Social Media Without Any Link Using XBRUTE.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>Access Someone Social Media Without Any Link Using XBRUTE</p>
+      <a class="download-btn" href="https://drive.google.com/file/d/1472E4RUagMNvU2G3Rn-ZlPR9l2PRbd3d/view?usp=drive_link" download> <img src="images/download.png" alt=""> </a>
+    </div>
+
+
+            <div class="video-card">
+      <video controls>
+        <source src="videos/8) Find Someone Location Using Seeker Ssh.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>Find Someone Location Using Seeker Ssh</p>
+      <a class="download-btn" href="https://drive.google.com/file/d/14QQXaVDX8MPa-G3lkXbhQ60dlL1y8TzG/view?usp=drive_link" download> <img src="images/download.png" alt=""> </a>
+    </div>
+
+
+            <div class="video-card">
+      <video controls>
+        <source src="videos/9)H@ck Camera, Location, Mic Using Stormbreaker.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+       <p>H@ck Camera, Location, Mic Using Stormbreaker</p>
+      <a class="download-btn" href="https://drive.google.com/file/d/146PvVl7epsk5rZav3qJQJv-YhC1JhLVr/view?usp=drive_link" download> <img src="images/download.png" alt=""> </a>
+    </div>
+
+            <div class="video-card">
+      <video controls>
+        <source src="videos/10) Port Forwarding Using Packetriot.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+       <p>Port Forwarding Using Packetriot</p>
+      <a class="download-btn" href="https://drive.google.com/file/d/18l4Dgrv_rFBfQxnId3AWYoiXJx9LuRFH/view?usp=drive_link" download> <img src="images/download.png" alt=""> </a>
+    </div>
+
+
+
+           <div class="video-card">
+      <video controls>
+        <source src="videos/11) Remotely Access Any Android Phone Using Crax Rat.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>Remotely Access Any Android Phone Using Crax Rat</p>
+      <a class="download-btn" href="https://drive.google.com/file/d/143olWxEDRndVH-EiAsY-o5krincevx0p/view?usp=drive_link" download> <img src="images/download.png" alt=""> </a>
+    </div>
+
+    
+           <div class="video-card">
+      <video controls>
+        <source src="videos/12) Remotely Access Any Android Phone Using Metasploit.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+       <p> Remotely Access Any Android Phone Using Metasploit.mp4</p>
+      <a class="download-btn" href="https://drive.google.com/file/d/198j2vcjL9CK72JaKU5vvKJwirCvMPAk-/view?usp=drive_link" download> <img src="images/download.png" alt=""> </a>
+    </div>
+
+
+               <div class="video-card">
+      <video controls>
+        <source src="videos/14) How To FInd And Install H@cking Tools .mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>How To FInd And Install H@cking Tools</p>
+      <a class="download-btn" href="https://drive.google.com/file/d/16bwWuW59UiwREZiF4gm0DYU89RSqFmhy/view?usp=drive_link" download> <img src="images/download.png" alt=""> </a>
+    </div>
+
+
+           <div class="video-card">
+      <video controls>
+        <source src="videos/15) Xbomb.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+       <p>Powerful Sp@mming Tool Xbomb</p>
+      <a class="download-btn" href="https://drive.google.com/file/d/190Fnv2ApsISPvBnBs4xEFy_dCLvchJuj/view?usp=drive_link" download> <img src="images/download.png" alt=""> </a>
+    </div>
+
+
+  </div>
+  
+  <hr>
+<div id="download">
+  <h1><b>Your Hacking Toolkit Starts Here</b></h1>
+</div>
+
+
+  <div class="row justify-content-center mt-4">
+  <div class="col-md-4">
+    <a href="https://github.com/ABDULLAHASADXYZ/All-In-One.git" class="card-link">
+      <div class="card">
+        <img src="images/Allin.png" class="card-img-top" alt="Centered Image">
+        <div class="card-body">
+          <h2>All-In-One</h2>
+          <p><b>EDUCATIONAL PURPOSES ONLY:</b> <br> <b>This is all you need—just download it and you're set.</b> The following tool and instructions are provided for educational purposes only. I, the author, am not responsible for any misuse, damage, or unintended consequences that may arise from using the provided information or tools. By using this tool, you agree to assume full responsibility for any actions you take and for the outcomes that result. Please use responsibly and only for ethical and legal purposes.</p>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+  
+  
+  
+  
+  <div class="container mt-4">
+  <div class="row g-4">
+    <!-- First 3 Cards -->
+    <div class="col-md-4">
+      <a href="https://drive.google.com/file/d/1VzQ7XkBuS8smx1JCEDohggmbThk0672_/view?usp=drive_link" class="card-link">
+        <div class="card">
+          <img src="images/craxrat.webp" class="card-img-top" alt="Image 1">
+          <div class="card-body">
+            <p>Disclaimer: The following tool and instructions are provided for educational purposes only. I, the author, am not responsible for any misuse, damage, or unintended consequences that may arise from using the provided information or tools. By using this tool, you agree to assume full responsibility for any actions you take and for the outcomes that result. Please use responsibly and only for ethical and legal purposes.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-4">
+      <a href="https://github.com/ABDULLAHASADXYZ/Xbomb.git" class="card-link">
+        <div class="card">
+          <img src="images/xbomb.png" class="card-img-top" alt="Image 2">
+          <div class="card-body">
+            <p>Disclaimer: The following tool and instructions are provided for educational purposes only. I, the author, am not responsible for any misuse, damage, or unintended consequences that may arise from using the provided information or tools. By using this tool, you agree to assume full responsibility for any actions you take and for the outcomes that result. Please use responsibly and only for ethical and legal purposes.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-4">
+      <a href="https://github.com/ABDULLAHASADXYZ/XHIDE.git" class="card-link">
+        <div class="card">
+          <img src="images/xhider.png" class="card-img-top" alt="Image 3">
+          <div class="card-body">
+            <p>Disclaimer: The following tool and instructions are provided for educational purposes only. I, the author, am not responsible for any misuse, damage, or unintended consequences that may arise from using the provided information or tools. By using this tool, you agree to assume full responsibility for any actions you take and for the outcomes that result. Please use responsibly and only for ethical and legal purposes.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+<br>
+
+  <div class="row g-4 mt-2">
+    <div class="col-md-4">
+      <a href="https://github.com/ABDULLAHASADXYZ/Serveo.git" class="card-link">
+        <div class="card">
+          <img src="images/serveo.png" class="card-img-top" alt="Image 4">
+          <div class="card-body">
+            <p>Disclaimer: The following tool and instructions are provided for educational purposes only. I, the author, am not responsible for any misuse, damage, or unintended consequences that may arise from using the provided information or tools. By using this tool, you agree to assume full responsibility for any actions you take and for the outcomes that result. Please use responsibly and only for ethical and legal purposes.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-4">
+      <a href="https://github.com/ABDULLAHASADXYZ/XBRUTE.git" class="card-link">
+        <div class="card">
+          <img src="images/xbrute.png" class="card-img-top" alt="Image 5">
+          <div class="card-body">
+            <p>The XBRUTE on GitHub is for educational purposes only. I take no responsibility for its usage by third parties, and any illegal activities are strictly prohibited. Users must comply with security and privacy policies of social media platforms and obtain proper authorization. The toolkit may contain potentially harmful materials. Use at your own risk, adhering to relevant laws and regulations.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+ 
+     <div class="col-md-4">
+      <a href="https://github.com/ABDULLAHASADXYZ/XCLOUD.git" class="card-link">
+        <div class="card">
+          <img src="images/XCLOUD.png" class="card-img-top" alt="Image 5">
+          <div class="card-body">
+            <p>Disclaimer: The following tool and instructions are provided for educational purposes only. I, the author, am not responsible for any misuse, damage, or unintended consequences that may arise from using the provided information or tools. By using this tool, you agree to assume full responsibility for any actions you take and for the outcomes that result. Please use responsibly and only for ethical and legal purposes.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+ 
+ 
+  </div>
+</div>
+
+
+  <!-- JavaScript for Vault Unlocking -->
+
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <footer>    
+    <a href="https://www.instagram.com/abdullah.net.io" target="_blank">
+            <img src="images/insta.jpeg" alt="Instagram" class="social-logo">
+        </a>
+           <a href="https://wa.me/+923353393213" target="_blank">
+            <img src="images/whatsapp.avif" alt="Instagram" class="social-logo">
+        </a>
+           <a href="https://www.instagram.com/yourusername" target="_blank">
+            <img src="images/insta.jpeg" alt="Instagram" class="social-logo">
+        </a>
+    </footer>
+
+
+  </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+  const correctPassword = "abdullah.io"; // 🔑 Set your real password
+
+  function unlockVault() {
+    const input = document.getElementById("vaultPassword").value;
+    const vault = document.getElementById("vaultSection");
+    const error = document.getElementById("error");
+
+    if (input === correctPassword) {
+      vault.style.display = "block";
+      error.style.display = "none";
+    } else {
+      error.style.display = "block";
+      vault.style.display = "none";
+    }
+  }
+
+  function showJazzCashInfo() {
+    document.getElementById("jazzcashInfo").style.display = "block";
+  }
+</script>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+ 
+
+
+
+</body>
+</html>
+

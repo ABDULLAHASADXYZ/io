@@ -194,7 +194,7 @@ h4{
   }
 
     #preloader {
-    background: #000 url('images/') no-repeat center center;
+    background: #000 url('images/preloder.png') no-repeat center center;
     background-size: 80px;
     height: 100vh;
     width: auto;

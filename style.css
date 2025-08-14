@@ -197,7 +197,7 @@ h4{
     background: #000 url('images/preloder.png') no-repeat center center;
     background-size: 80px;
     height: 100vh;
-    width: auto;
+    width: 100%;
     position: fixed;
     z-index: 9999;
   }

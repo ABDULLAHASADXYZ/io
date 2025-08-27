@@ -25,33 +25,49 @@
 <body>
 
 
-<div id="preloader"></div>
 
+
+
+
+
+<!-- Advanced Course / Tor Warning (sticky, once per session) -->
+<div id="torBanner" class="alert alert-warning text-dark sticky-top m-0 d-none" role="alert" style="text-align: center;" "z-index:1060;">
+  <strong>⚠️ Advanced Course Notice:</strong> To purchase/access the <b>Advanced Course</b> you must use the
+  <a href="https://www.torproject.org/" target="_blank" rel="noopener noreferrer" class="alert-link">Tor Browser</a>.
+  <button type="button" class="btn-close float-end" aria-label="Close" id="closeTorBanner"></button>
+</div>
+
+<script>
+  // Show once per session
+  (function () {
+    const banner = document.getElementById('torBanner');
+    const key = 'abdullahnet_tor_banner_seen';
+    if (!sessionStorage.getItem(key)) {
+      banner.classList.remove('d-none');
+    }
+    document.getElementById('closeTorBanner')?.addEventListener('click', () => {
+      banner.classList.add('d-none');
+      sessionStorage.setItem(key, '1');
+    });
+  })();
+</script>
+
+
+
+
+
+
+
+
+<div id="preloader"></div>
 
 
 <script> window.addEventListener('load', () => { document.getElementById('preloader').style.display = 'none'; }); </script>
 
 
-
     
 
-<button onclick="topFunction()" id="backToTop" title="Go to top">↑ Top</button>
 
-<script>
-  let mybutton = document.getElementById("backToTop");
-
-  window.onscroll = function () {
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-      mybutton.style.display = "block";
-    } else {
-      mybutton.style.display = "none";
-    }
-  };
-
-  function topFunction() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-</script>
 
 
 
@@ -107,7 +123,13 @@
            
               <li class="nav-item">
           <a class="nav-link" href="https://wowowowowowow.netlify.app/">
-            <img src="images/lock.jpeg" alt="instagram" class="social-logo">
+            <img src="images/lock-icon-black-white-black-background-illustration-lock-icon-black-white-black-background-vector-illustration-170336738.webp" alt="instagram" class="social-logo">
+          </a>
+        </li>
+
+                    <li class="nav-item">
+          <a class="nav-link" href="http://nu63c3orsu55wwfhmgu6ucxnwituyssvxm7khdof23mfvi4fuitgvhqd.onion">
+            <img src="images/hacker-internet-web-digital-logo-hoodie-silhouette-clip-art-icon-symbol-dark-web-scurity-hack-editable-vector.jpg" alt="instagram" class="social-logo">
           </a>
         </li>
            
@@ -282,7 +304,7 @@ Students aged 16 years and above (both boys and girls) are eligible for a <b>49%
 
 <div class="progress mb-2">
   <div class="progress-bar bg-danger" style="width: 80%;">
-    Network Recon & Mapping
+    Necesanco & Hosting On Dark Web
   </div>
 </div>
 
@@ -328,6 +350,7 @@ Students aged 16 years and above (both boys and girls) are eligible for a <b>49%
 
 
 <div class="accordion my-4" id="faqAccordion">
+  <!-- Question 1 -->
   <div class="accordion-item bg-dark text-white border-secondary">
     <h2 class="accordion-header">
       <button class="accordion-button bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
@@ -341,6 +364,7 @@ Students aged 16 years and above (both boys and girls) are eligible for a <b>49%
     </div>
   </div>
 
+  <!-- Question 2 -->
   <div class="accordion-item bg-dark text-white border-secondary">
     <h2 class="accordion-header">
       <button class="accordion-button collapsed bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#q2">
@@ -355,6 +379,7 @@ Students aged 16 years and above (both boys and girls) are eligible for a <b>49%
   </div>
 </div>
 
+<!-- 🕶️ Hacker Style Contact Form (Urdu + English) -->
 <section class="container my-5">
   <div class="row justify-content-center">
     <div class="col-12 col-md-10 col-lg-8">

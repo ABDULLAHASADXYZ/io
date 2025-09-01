@@ -253,6 +253,17 @@
   </div>
 </div>
 
+
+
+<div class="video-card">
+  <h1>Why Should You Take This Course?</h1>
+  <br>
+  <video controls controlsList="nodownload" oncontextmenu="return false;" width="560" height="315">
+    <source src="videos/WSWPT.mp4" type="video/mp4">
+    ABDULLAH.NET
+  </video>
+</div>
+
 <br>
 <section class="section text-light">
   <div class="container">
@@ -337,20 +348,47 @@
 
 
 
-
-
-  <div style="background-color:#111; padding:20px 10px; text-align:center; border-top:2px solid #444;">
-  <img src="images/Music.png" alt="موسیقی آئیکون" style="height:50px; vertical-align:middle; margin-right:10px;">
-  <span style="font-size:1.2rem; color:white; vertical-align:middle; font-family:'Noto Nastaliq Urdu', serif;">
-    ہماری <b>محفلِ سُر</b> موسیقی کلیکشن دریافت کریں 🎶
-  </span>
-  <br><br>
-  <a href="https://mehfil-e-sur.netlify.app/" class="btn btn-outline-light btn-sm" style="font-family:'Noto Nastaliq Urdu', serif;">
-    🎧 سنیں اب
-  </a>
-</div>
-
-
+<section class="container my-5 text-center">
+  <h2 class="mb-4 text-light">✨ Why Choose Abdullah.net?</h2>
+  <div class="row g-4">
+    <div class="col-md-3">
+      <div class="card bg-dark text-white h-100 shadow">
+        <div class="card-body">
+          <h1>🎯</h1>
+          <h5>Beginner Friendly</h5>
+          <p>No prior experience needed, start from scratch.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card bg-dark text-white h-100 shadow">
+        <div class="card-body">
+          <h1>🛡️</h1>
+          <h5>Practical Tools</h5>
+          <p>Hands-on vault access with real hacking tools.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card bg-dark text-white h-100 shadow">
+        <div class="card-body">
+          <h1>🚀</h1>
+          <h5>Advanced Modules</h5>
+          <p>Dark Web, Brute Attacks & Social Media Hacking</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card bg-dark text-white h-100 shadow">
+        <div class="card-body">
+          <h1>🎥</h1>
+          <h5>Live Classes</h5>
+          <p>Interactive sessions with instant Q&A.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <hr>
 <footer>    
@@ -378,6 +416,41 @@
   </script>
 </div>
 <br>
+
+<script>
+// Disable right-click
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+}, false);
+
+// Disable text selection and drag
+document.addEventListener("selectstart", function(e){
+    e.preventDefault();
+}, false);
+
+document.addEventListener("dragstart", function(e){
+    e.preventDefault();
+}, false);
+
+// Disable common keyboard shortcuts
+document.addEventListener("keydown", function(e) {
+    // F12
+    if(e.key === "F12") e.preventDefault();
+    // Ctrl+Shift+I (Inspect)
+    if(e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") e.preventDefault();
+    // Ctrl+Shift+J (Console)
+    if(e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "j") e.preventDefault();
+    // Ctrl+U (View source)
+    if(e.ctrlKey && e.key.toLowerCase() === "u") e.preventDefault();
+    // Ctrl+C (Copy)
+    if(e.ctrlKey && e.key.toLowerCase() === "c") e.preventDefault();
+    // Ctrl+S (Save)
+    if(e.ctrlKey && e.key.toLowerCase() === "s") e.preventDefault();
+    // Ctrl+Shift+C (Inspect element)
+    if(e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "c") e.preventDefault();
+});
+</script>
+
 
 
   </body>
